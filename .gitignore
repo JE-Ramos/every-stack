@@ -48,8 +48,8 @@ generated/
 # Docker
 docker-compose.override.yml
 
-# Content uploads (user data, not committed)
-content/
+# Content uploads (user data, not committed — scoped to root to avoid ignoring packages/content)
+/content/
 
 # Misc
 *.tgz

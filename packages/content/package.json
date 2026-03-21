@@ -1,0 +1,19 @@
+{
+    "name": "@everystack/content",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "build": "tsc --build",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@everystack/core": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.9.3"
+    }
+}
