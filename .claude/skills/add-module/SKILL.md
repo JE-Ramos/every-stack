@@ -1,6 +1,7 @@
 ---
 name: add-module
-description: Add a new module to the EveryStack monorepo. Use when creating a new frontend feature, backend route module, shared package, or mobile feature. Handles all wiring — commit scopes, Nx targets, OpenAPI spec, CODEOWNERS, and codegen.
+description: "Add a new module to the EveryStack monorepo. Use when creating a new frontend feature, backend route module, shared package, or mobile feature. Handles all wiring — commit scopes, Nx targets, OpenAPI spec, CODEOWNERS, and codegen. Do NOT load for general coding tasks, refactoring existing modules, or questions about project structure."
+argument-hint: "[module-type] [name]"
 ---
 
 # Add Module to EveryStack

@@ -1,16 +1,15 @@
 # .claude/
 
-AI agent configuration — rules, commands, and skills for Claude Code.
+AI agent configuration — rules and skills for Claude Code.
 
 ## Structure
 
 - `rules/` — Always-applied coding conventions (react.md, typescript.md)
-- `commands/` — Role-based AI personas (36 roles: backend-engineer, frontend-engineer, etc.)
-- `skills/` — Project-specific capabilities (add-module, etc.)
+- `skills/` — Role-based personas (36 roles) + project capabilities (add-module)
 
-## Rules
+## Invocation Model
 
 - Rules in `rules/` apply automatically based on file patterns
-- Commands in `commands/` are invoked by name (e.g. `/backend-engineer`)
-- Skills in `skills/` are discovered automatically when relevant to the task
-- Do not edit files in `commands/` without understanding the role persona
+- **Role personas** (ai-engineer, frontend-engineer, etc.) use `disable-model-invocation: true` — invoke manually with `/skill-name`
+- **Project capabilities** (add-module) auto-invoke when Claude detects relevant context
+- Each skill's RTFM/references section lives in a separate `references.md` for progressive disclosure
