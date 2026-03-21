@@ -45,17 +45,17 @@ jobs:
                   path: licenses.json
                   retention-days: 30
 
-    # CodeQL requires GitHub Advanced Security (free for public repos, paid for private).
-    # Re-enable when the repo goes public or GHAS is available.
-    # codeql:
-    #     runs-on: ubuntu-latest
-    #     steps:
-    #         - uses: actions/checkout@v4
-    #         - name: Initialize CodeQL
-    #           uses: github/codeql-action/init@v3
-    #           with:
-    #               languages: javascript-typescript
-    #         - name: Run CodeQL analysis
-    #           uses: github/codeql-action/analyze@v3
-    #           with:
-    #               category: "/language:javascript-typescript"
+    codeql:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Initialize CodeQL
+              uses: github/codeql-action/init@v3
+              with:
+                  languages: javascript-typescript
+
+            - name: Run CodeQL analysis
+              uses: github/codeql-action/analyze@v3
+              with:
+                  category: "/language:javascript-typescript"
