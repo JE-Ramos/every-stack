@@ -41,13 +41,14 @@ class SearchResponse(BaseModel):
 
 async def search_db(query: str, domain: Optional[str], db: AsyncSession) -> Optional[List[SearchResultItem]]:
     try:
-        stmt = select(DocumentModel).where(
-            or_(
-                func.lower(DocumentModel.title).contains(query.lower()),
-                func.lower(DocumentModel.summary).contains(query.lower()),
-                func.lower(DocumentModel.content).contains(query.lower()),
-            )
-        )
+        terms = query.split()
+        conditions = []
+        for term in terms:
+            pattern = f"%{term}%"
+            conditions.append(DocumentModel.title.ilike(pattern))
+            conditions.append(DocumentModel.summary.ilike(pattern))
+            conditions.append(DocumentModel.content.ilike(pattern))
+        stmt = select(DocumentModel).where(or_(*conditions))
         if domain:
             stmt = stmt.where(func.lower(DocumentModel.domain) == domain.lower())
 
