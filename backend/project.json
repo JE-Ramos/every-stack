@@ -1,0 +1,25 @@
+{
+    "name": "backend",
+    "projectType": "application",
+    "root": "backend",
+    "targets": {
+        "dev": {
+            "command": ".venv/bin/uvicorn app.main:app --reload --port 3001",
+            "options": {
+                "cwd": "backend"
+            }
+        },
+        "test": {
+            "command": ".venv/bin/pytest",
+            "options": {
+                "cwd": "backend"
+            }
+        },
+        "lint": {
+            "command": ".venv/bin/python -m ruff check .",
+            "options": {
+                "cwd": "backend"
+            }
+        }
+    }
+}

@@ -1,0 +1,239 @@
+openapi: 3.1.0
+info:
+    title: EveryStack API
+    version: 0.0.0
+    description: Shared API contract between frontend and backend. Changes require both team approvals.
+
+servers:
+    - url: http://localhost:3001
+      description: Local development
+
+paths:
+    /api/health:
+        get:
+            operationId: getHealth
+            summary: Health check
+            tags: [system]
+            responses:
+                "200":
+                    description: Service is healthy
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/HealthResponse"
+
+    /api/ready:
+        get:
+            operationId: getReady
+            summary: Readiness check
+            tags: [system]
+            responses:
+                "200":
+                    description: Service is ready
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/HealthResponse"
+
+    /api/stack:
+        get:
+            operationId: getStack
+            summary: Template stack info
+            tags: [system]
+            responses:
+                "200":
+                    description: Stack metadata
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/StackResponse"
+
+    /api/search:
+        post:
+            operationId: search
+            summary: Search documents
+            tags: [search]
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/SearchRequest"
+            responses:
+                "200":
+                    description: Search results
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/SearchResponse"
+                "400":
+                    description: Invalid request (empty query)
+
+    /api/upload:
+        post:
+            operationId: uploadDocument
+            summary: Upload a document to S3 and index in database
+            tags: [upload]
+            requestBody:
+                required: true
+                content:
+                    multipart/form-data:
+                        schema:
+                            type: object
+                            required: [file, title]
+                            properties:
+                                file:
+                                    type: string
+                                    format: binary
+                                title:
+                                    type: string
+                                domain:
+                                    type: string
+                                    default: General
+                                tags:
+                                    type: string
+                                    description: Comma-separated tags
+            responses:
+                "200":
+                    description: Upload successful
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/UploadResponse"
+
+    /api/search/domains:
+        get:
+            operationId: getDomains
+            summary: List available domains
+            tags: [search]
+            responses:
+                "200":
+                    description: Domain list
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/DomainsResponse"
+
+components:
+    schemas:
+        HealthResponse:
+            type: object
+            required: [status, timestamp]
+            properties:
+                status:
+                    type: string
+                    example: ok
+                timestamp:
+                    type: string
+                    format: date-time
+
+        SearchRequest:
+            type: object
+            required: [query]
+            properties:
+                query:
+                    type: string
+                    minLength: 1
+                    example: 5G handover
+                domain:
+                    type: string
+                    nullable: true
+                    example: RAN
+
+        SearchResultItem:
+            type: object
+            required: [id, title, domain, modality, summary, tags]
+            properties:
+                id:
+                    type: string
+                title:
+                    type: string
+                domain:
+                    type: string
+                modality:
+                    type: string
+                summary:
+                    type: string
+                tags:
+                    type: array
+                    items:
+                        type: string
+
+        SearchResponse:
+            type: object
+            required: [query, domain, count, results, source]
+            properties:
+                query:
+                    type: string
+                domain:
+                    type: string
+                    nullable: true
+                count:
+                    type: integer
+                results:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/SearchResultItem"
+                source:
+                    type: string
+                    description: Where results came from (database or mock)
+
+        UploadResponse:
+            type: object
+            required: [id, title, domain, s3_key, size]
+            properties:
+                id:
+                    type: string
+                title:
+                    type: string
+                domain:
+                    type: string
+                s3_key:
+                    type: string
+                size:
+                    type: integer
+
+        DomainsResponse:
+            type: object
+            required: [domains]
+            properties:
+                domains:
+                    type: array
+                    items:
+                        type: string
+
+        StackPackage:
+            type: object
+            required: [name, description]
+            properties:
+                name:
+                    type: string
+                description:
+                    type: string
+
+        StackResponse:
+            type: object
+            required: [name, description, packages, ciChecks, techStack, uptime, pythonVersion]
+            properties:
+                name:
+                    type: string
+                description:
+                    type: string
+                packages:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/StackPackage"
+                ciChecks:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/StackPackage"
+                techStack:
+                    type: object
+                    additionalProperties:
+                        type: array
+                        items:
+                            type: string
+                uptime:
+                    type: integer
+                pythonVersion:
+                    type: string

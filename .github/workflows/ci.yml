@@ -149,6 +149,9 @@ jobs:
 
             - run: pnpm build
 
+            - name: Check bundle size
+              run: pnpm size
+
             - uses: actions/upload-artifact@v4
               with:
                   name: frontend-dist

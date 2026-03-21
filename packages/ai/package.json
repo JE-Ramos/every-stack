@@ -1,0 +1,21 @@
+{
+    "name": "@everystack/ai",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "build": "tsc --build",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@everystack/core": "workspace:*",
+        "@everystack/utils": "workspace:*",
+        "@everystack/config": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.9.3"
+    }
+}

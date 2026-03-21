@@ -1,0 +1,17 @@
+# OpenAPI Generator config for Kotlin Multiplatform client
+# Run: npx @openapitools/openapi-generator-cli generate -c specs/openapi-generator-kotlin.yaml
+#
+# Prerequisites:
+#   npm install -g @openapitools/openapi-generator-cli
+#   (or use Docker: docker run --rm -v .:/local openapitools/openapi-generator-cli generate -c /local/specs/openapi-generator-kotlin.yaml)
+
+inputSpec: specs/api.openapi.yaml
+generatorName: kotlin
+outputDir: apps/mobile/shared/api
+apiPackage: com.everystack.api
+modelPackage: com.everystack.api.models
+additionalProperties:
+    library: multiplatform
+    serializationLibrary: kotlinx_serialization
+    dateLibrary: kotlinx-datetime
+    useCoroutines: "true"

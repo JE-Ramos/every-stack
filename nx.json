@@ -1,0 +1,32 @@
+{
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "plugins": [
+        {
+            "plugin": "nx/plugins/package-json"
+        }
+    ],
+    "targetDefaults": {
+        "dev": {
+            "cache": false
+        },
+        "build": {
+            "dependsOn": ["^build"],
+            "cache": true
+        },
+        "test": {
+            "cache": true
+        },
+        "lint": {
+            "cache": true
+        },
+        "typecheck": {
+            "dependsOn": ["^build"],
+            "cache": true
+        }
+    },
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "!{projectRoot}/dist/**", "!{projectRoot}/coverage/**"],
+        "production": ["default", "!{projectRoot}/**/*.test.*", "!{projectRoot}/**/*.spec.*"]
+    },
+    "defaultBase": "main"
+}

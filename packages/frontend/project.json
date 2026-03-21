@@ -1,0 +1,27 @@
+{
+    "name": "frontend",
+    "projectType": "application",
+    "targets": {
+        "dev": {
+            "command": "vite",
+            "options": { "cwd": "packages/frontend" }
+        },
+        "build": {
+            "command": "tsc --noEmit && vite build",
+            "options": { "cwd": "packages/frontend" },
+            "outputs": ["{projectRoot}/dist"]
+        },
+        "test": {
+            "command": "vitest run --passWithNoTests",
+            "options": { "cwd": "packages/frontend" }
+        },
+        "lint": {
+            "command": "eslint .",
+            "options": { "cwd": "packages/frontend" }
+        },
+        "preview": {
+            "command": "vite preview",
+            "options": { "cwd": "packages/frontend" }
+        }
+    }
+}

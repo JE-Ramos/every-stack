@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Nx
+.nx/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE (user-specific, not committed)
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Cursor (user-specific)
+.cursor/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+
+# Generated code
+__generated__/
+generated/
+
+# Docker
+docker-compose.override.yml
+
+# Content uploads (user data, not committed)
+content/
+
+# Misc
+*.tgz
+.cache/
+
+# Note: .claude/ is NOT ignored — it is committed to the repo

@@ -1,0 +1,12 @@
+{
+    "files": [],
+    "references": [
+        { "path": "packages/core" },
+        { "path": "packages/utils" },
+        { "path": "packages/config" },
+        { "path": "packages/content" },
+        { "path": "packages/ai" },
+        { "path": "packages/ui" },
+        { "path": "packages/frontend" }
+    ]
+}

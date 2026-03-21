@@ -1,0 +1,13 @@
+{
+    "name": "mobile",
+    "projectType": "application",
+    "root": "apps/mobile",
+    "targets": {
+        "build": {
+            "command": "echo 'KMP build not yet configured — see apps/mobile/README.md'"
+        },
+        "test": {
+            "command": "echo 'KMP tests not yet configured — see apps/mobile/README.md'"
+        }
+    }
+}

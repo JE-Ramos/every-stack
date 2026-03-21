@@ -1,0 +1,26 @@
+{
+    "name": "@everystack/ui",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "scripts": {
+        "build": "tsc --build",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@everystack/core": "workspace:*",
+        "@everystack/utils": "workspace:*",
+        "@everystack/content": "workspace:*",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4",
+        "lucide-react": "^0.577.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.9.3",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0"
+    }
+}

@@ -1,0 +1,7 @@
+[
+    {
+        "path": "packages/frontend/dist/assets/*.js",
+        "limit": "200 kB",
+        "gzip": true
+    }
+]

@@ -1,0 +1,32 @@
+# ──────────────────────────────────────────────
+# EveryStack CODEOWNERS
+# ──────────────────────────────────────────────
+# Each line is a file pattern followed by one or more owners.
+# PRs touching these paths require approval from the listed teams.
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Platform / shared infra (requires platform team approval)
+packages/core/              @org/platform
+packages/utils/             @org/platform
+packages/config/            @org/platform
+.github/                    @org/platform
+nx.json                     @org/platform
+docker-compose.yml          @org/platform
+tsconfig*.json              @org/platform
+
+# Frontend (requires frontend team approval)
+packages/frontend/          @org/frontend
+packages/ui/                @org/frontend
+packages/content/           @org/frontend
+
+# Backend (requires backend team approval)
+backend/                    @org/backend
+
+# Mobile (requires mobile team approval)
+apps/mobile/                @org/mobile
+
+# AI / ML (requires AI team approval)
+packages/ai/                @org/ai
+
+# API contract — requires BOTH frontend and backend teams
+specs/                      @org/frontend @org/backend

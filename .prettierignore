@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+__pycache__/
+backend/
+*.gen.ts
+dist/
+build/
+pnpm-lock.yaml
+*.tsbuildinfo
+coverage/
+__generated__/
+generated/
+skills/
+.claude/commands/

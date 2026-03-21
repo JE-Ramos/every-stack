@@ -1,0 +1,54 @@
+name: Release
+
+on:
+    push:
+        branches: [main]
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    release-please:
+        runs-on: ubuntu-latest
+        outputs:
+            releases_created: ${{ steps.release.outputs.releases_created }}
+            frontend_released: ${{ steps.release.outputs['packages/frontend--release_created'] }}
+            frontend_tag: ${{ steps.release.outputs['packages/frontend--tag_name'] }}
+            backend_released: ${{ steps.release.outputs['backend--release_created'] }}
+            backend_tag: ${{ steps.release.outputs['backend--tag_name'] }}
+            root_released: ${{ steps.release.outputs['\.--release_created'] }}
+            root_tag: ${{ steps.release.outputs['\.--tag_name'] }}
+        steps:
+            - uses: googleapis/release-please-action@v4
+              id: release
+              with:
+                  manifest-file: .release-please-manifest.json
+                  config-file: release-please-config.json
+
+    deploy-frontend:
+        needs: release-please
+        if: needs.release-please.outputs.frontend_released == 'true'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Deploy frontend
+              run: |
+                  echo "Frontend released: ${{ needs.release-please.outputs.frontend_tag }}"
+                  echo "Vercel auto-deploys from main. If using CI-controlled deploys, add vercel CLI here."
+                  # npx vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+    deploy-backend:
+        needs: release-please
+        if: needs.release-please.outputs.backend_released == 'true'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Build and push backend Docker image
+              run: |
+                  echo "Backend released: ${{ needs.release-please.outputs.backend_tag }}"
+                  echo "Add Docker registry push or Railway/Render deploy webhook here."
+                  # docker build -f backend/Dockerfile -t ghcr.io/${{ github.repository }}/backend:${{ needs.release-please.outputs.backend_tag }} backend/
+                  # docker push ghcr.io/${{ github.repository }}/backend:${{ needs.release-please.outputs.backend_tag }}

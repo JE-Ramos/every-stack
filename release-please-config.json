@@ -1,0 +1,38 @@
+{
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+    "packages": {
+        "packages/frontend": {
+            "package-name": "@everystack/frontend",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md",
+            "bump-minor-pre-major": true,
+            "bump-patch-for-minor-pre-major": true
+        },
+        "backend": {
+            "package-name": "@everystack/backend",
+            "release-type": "python",
+            "changelog-path": "CHANGELOG.md",
+            "bump-minor-pre-major": true,
+            "bump-patch-for-minor-pre-major": true,
+            "extra-files": ["backend/VERSION"]
+        },
+        ".": {
+            "package-name": "everystack",
+            "release-type": "node",
+            "changelog-path": "CHANGELOG.md",
+            "bump-minor-pre-major": true,
+            "bump-patch-for-minor-pre-major": true
+        }
+    },
+    "separate-pull-requests": false,
+    "group-pull-request-title-pattern": "chore: release ${version}",
+    "pull-request-title-pattern": "chore: release ${component} ${version}",
+    "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "perf", "section": "Performance" },
+        { "type": "refactor", "section": "Refactoring" },
+        { "type": "docs", "section": "Documentation" },
+        { "type": "chore", "section": "Maintenance", "hidden": true }
+    ]
+}
