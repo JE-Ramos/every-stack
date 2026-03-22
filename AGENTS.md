@@ -71,6 +71,15 @@ pnpm changeset             # Create a changeset for version bumps
 pnpm version-packages      # Apply changesets and bump versions
 ```
 
+## Git Workflow
+
+- All changes go through **pull requests** — no direct pushes to `main`
+- PRs require **1 approval** and all CI checks passing (lint, format, typecheck, test, build)
+- **Squash merge only** — PR title becomes the commit message, keep it conventional
+- Branches auto-delete after merge
+- Branch must be up to date with `main` before merging
+- Linear history enforced — no merge commits
+
 ## Conventional Commits
 
 All commits must follow [Conventional Commits](https://www.conventionalcommits.org/). Enforced by commitlint via a husky `commit-msg` hook.
