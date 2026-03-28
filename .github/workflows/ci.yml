@@ -14,18 +14,18 @@ jobs:
     install:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
             - run: pnpm install --frozen-lockfile
 
-            - uses: actions/cache/save@v4
+            - uses: actions/cache/save@v5
               with:
                   path: |
                       node_modules
@@ -36,16 +36,16 @@ jobs:
         needs: install
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
-            - uses: actions/cache/restore@v4
+            - uses: actions/cache/restore@v5
               with:
                   path: |
                       node_modules
@@ -58,16 +58,16 @@ jobs:
         needs: install
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
-            - uses: actions/cache/restore@v4
+            - uses: actions/cache/restore@v5
               with:
                   path: |
                       node_modules
@@ -80,16 +80,16 @@ jobs:
         needs: install
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
-            - uses: actions/cache/restore@v4
+            - uses: actions/cache/restore@v5
               with:
                   path: |
                       node_modules
@@ -102,16 +102,16 @@ jobs:
         needs: install
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
-            - uses: actions/cache/restore@v4
+            - uses: actions/cache/restore@v5
               with:
                   path: |
                       node_modules
@@ -120,7 +120,7 @@ jobs:
 
             - run: pnpm test:coverage
 
-            - uses: actions/upload-artifact@v4
+            - uses: actions/upload-artifact@v7
               if: always()
               with:
                   name: coverage-report
@@ -131,16 +131,16 @@ jobs:
         needs: install
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
-            - uses: pnpm/action-setup@v4
+            - uses: pnpm/action-setup@v5
 
-            - uses: actions/setup-node@v4
+            - uses: actions/setup-node@v6
               with:
                   node-version: 22
                   cache: pnpm
 
-            - uses: actions/cache/restore@v4
+            - uses: actions/cache/restore@v5
               with:
                   path: |
                       node_modules
@@ -152,7 +152,7 @@ jobs:
             - name: Check bundle size
               run: pnpm size
 
-            - uses: actions/upload-artifact@v4
+            - uses: actions/upload-artifact@v7
               with:
                   name: frontend-dist
                   path: packages/frontend/dist/
