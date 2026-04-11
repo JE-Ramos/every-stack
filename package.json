@@ -38,23 +38,23 @@
     "devDependencies": {
         "@commitlint/cli": "^20.5.0",
         "@commitlint/config-conventional": "^20.5.0",
-        "@eslint/js": "^9.39.4",
+        "@eslint/js": "^10.0.1",
         "@size-limit/preset-app": "^12.0.1",
-        "@vitest/coverage-v8": "^4.1.0",
+        "@vitest/coverage-v8": "^4.1.4",
         "concurrently": "^9.1.0",
-        "eslint": "^9.39.4",
+        "eslint": "^10.2.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-jsx-a11y": "^6.10.2",
         "eslint-plugin-react-hooks": "^7.0.1",
         "eslint-plugin-react-refresh": "^0.5.2",
         "husky": "^9.1.7",
         "lint-staged": "^16.4.0",
-        "nx": "^22.6.1",
-        "prettier": "^3.8.1",
+        "nx": "^22.6.5",
+        "prettier": "^3.8.2",
         "prettier-plugin-tailwindcss": "^0.7.2",
         "size-limit": "^12.0.1",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.57.1",
-        "vitest": "^4.1.0"
+        "typescript": "^6.0.2",
+        "typescript-eslint": "^8.58.1",
+        "vitest": "^4.1.4"
     }
 }
