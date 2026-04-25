@@ -20,7 +20,7 @@ jobs:
             root_released: ${{ steps.release.outputs['\.--release_created'] }}
             root_tag: ${{ steps.release.outputs['\.--tag_name'] }}
         steps:
-            - uses: googleapis/release-please-action@v4
+            - uses: googleapis/release-please-action@v5
               id: release
               with:
                   manifest-file: .release-please-manifest.json
@@ -31,7 +31,7 @@ jobs:
         if: needs.release-please.outputs.frontend_released == 'true'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
             - name: Deploy frontend
               run: |
@@ -44,7 +44,7 @@ jobs:
         if: needs.release-please.outputs.backend_released == 'true'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v6
 
             - name: Build and push backend Docker image
               run: |
