@@ -24,16 +24,16 @@
     },
     "devDependencies": {
         "@babel/core": "^7.26.0",
-        "@rolldown/plugin-babel": "^0.2.0",
-        "@tailwindcss/vite": "^4.2.2",
-        "@tanstack/react-query": "^5.91.3",
+        "@rolldown/plugin-babel": "^0.2.3",
+        "@tailwindcss/vite": "^4.2.4",
+        "@tanstack/react-query": "^5.100.5",
         "@types/react": "^19.0.0",
         "@types/react-dom": "^19.0.0",
         "@vitejs/plugin-react": "^6.0.1",
         "babel-plugin-react-compiler": "^1.0.0",
-        "orval": "^8.5.3",
-        "tailwindcss": "^4.2.2",
-        "typescript": "^5.9.3",
-        "vite": "^8.0.1"
+        "orval": "^8.8.1",
+        "tailwindcss": "^4.2.4",
+        "typescript": "^6.0.3",
+        "vite": "^8.0.10"
     }
 }
